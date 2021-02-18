@@ -37,14 +37,12 @@ class HashTable:
 
   def insert(self, key, value):
     nodeIndex = self.arr[self.hash_func(key)].find(key)
+    print(f'key: {key}')
     if nodeIndex != -1:
-      print(f'before: {self.arr[self.hash_func(key)][nodeIndex].data}')
-      self.arr[self.hash_func(key)][nodeIndex].data += value
-      print(f'after: {self.arr[self.hash_func(key)][nodeIndex].data}')
+      self.arr[self.hash_func(key)][nodeIndex].data['value'] += value
+      print(f'added new value: {self.arr[self.hash_func(key)][nodeIndex].data}')
     else:
-      self.arr[self.hash_func(key)].append({key: value})
-      print(f'stored: {self.arr[self.hash_func(key)][nodeIndex].data}')
-    print('inserted')
+      self.arr[self.hash_func(key)].append({'key': key, 'value': value})
 
 
 
