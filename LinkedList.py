@@ -46,12 +46,15 @@ class LinkedList:
       return counter
 
 
+
   def print_nodes(self):
     current = self.head
-    
+
     if current == None:
       print('The linked list is empty.')
     else:
       for i in range(self.length()):
-        print(f'Node {i}: {current.data}')
+        key = current.data['key']
+        value = current.data['value']
+        print(f'{key}: {value}')
         current = current.next
