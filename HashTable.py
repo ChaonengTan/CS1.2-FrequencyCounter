@@ -37,10 +37,13 @@ class HashTable:
 
   def insert(self, key, value):
     nodeIndex = self.arr[self.hash_func(key)].find(key)
-    print(f'key: {key}')
     if nodeIndex != -1:
-      self.arr[self.hash_func(key)][nodeIndex].data['value'] += value
-      print(f'added new value: {self.arr[self.hash_func(key)][nodeIndex].data}')
+      # gives the key of the current head of the linked list
+      # self.arr[self.hash_func(key)].head.data['key']
+      listPathing = self.arr[self.hash_func(key)].head
+      while listPathing.data['key'] != key:
+        listPathing = listPathing.next
+      listPathing.data['value'] = int(listPathing.data['value'])+value
     else:
       self.arr[self.hash_func(key)].append({'key': key, 'value': value})
 
@@ -59,8 +62,7 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    for llist in self.arr:
-      llist.print_nodes()
+    self.arr[0].print_nodes()
 
 
 
